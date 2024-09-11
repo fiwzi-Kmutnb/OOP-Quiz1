@@ -9,6 +9,7 @@ import java.util.List;
 import net.fiwzi.quiz.constants.constant;
 import net.fiwzi.quiz.infrastructure.storages.BirthdayNumber;
 import net.fiwzi.quiz.infrastructure.storages.HomeNumber;
+import net.fiwzi.quiz.internal.UI.component.ButtonBox;
 import net.fiwzi.quiz.internal.UI.component.InputBox;
 import net.fiwzi.quiz.internal.UI.component.LableText;
 import net.fiwzi.quiz.internal.UI.component.SelectBox;
@@ -95,13 +96,11 @@ public class JframeUserInterface {
         scrollPane.setBackground(new Color(117, 55, 10));
         scrollPane.setBorder(BorderFactory.createLineBorder(new Color(188, 96, 27), 2   ));
 
-
         JLabel HomeNo = new LableText("บ้านเลขที่: ",15f,Font.BOLD);
         JTextField input = new InputBox(20);
         JLabel labelSelect = new LableText("เลือกวันเกิด: ", 15f, Font.BOLD);
         JComboBox<String> comboBox = new SelectBox<String>(constant.DAYS);
-        JButton button = new JButton("ทำการคำนวณ!");
-        button.setFont(new Font("Prompt", Font.BOLD, 15));
+        JButton button = new ButtonBox("ทำการคำนวณ!",16f,Font.BOLD);
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -137,7 +136,7 @@ public class JframeUserInterface {
 
         GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
 
-        vGroup.addGap(100);
+        vGroup.addGap(50);
         vGroup.addGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(HomeNo)
@@ -150,7 +149,7 @@ public class JframeUserInterface {
         );
         vGroup.addGap(20);
         vGroup.addComponent(button);
-        vGroup.addGap(20);
+        vGroup.addGap(30);
         vGroup.addGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addGap(20).addComponent(scrollPane)
         );
