@@ -54,45 +54,39 @@ public class JframeUserInterface {
         JLabel keyDOB = new LableText("เลขมงคลวันเกิด: ",14f,Font.BOLD);
         JLabel DOB = new LableText("-");
 
+
         JPanel panel = new JPanel();
         JPanel textPanel = new JPanel();
-        JPanel textLablePanel = new JPanel();
-        JPanel textLablePanel2 = new JPanel();
-        JPanel textLablePanel3 = new JPanel();
-        JPanel textLablePanel4 = new JPanel();
-        JPanel textLablePanel5 = new JPanel();
         GroupLayout layout = new GroupLayout(panel);
-        textLablePanel.setBackground(new Color(117, 55, 10));
-        textLablePanel2.setBackground(new Color(117, 55, 10));
-        textLablePanel3.setBackground(new Color(117, 55, 10));
-        textLablePanel4.setBackground(new Color(117, 55, 10));
-        textLablePanel5.setBackground(new Color(117, 55, 10));
-        textPanel.setBackground(new Color(117, 55, 10));
-        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-        textLablePanel.add(keyMsg);
-        textLablePanel.add(msg);
-        textLablePanel2.add(keyJob);
-        textLablePanel2.add(job);
-        textLablePanel3.add(keyAddParticle);
-        textLablePanel3.add(addParticle);
-        textLablePanel4.add(keyDOB);
-        textLablePanel4.add(DOB);
-        textLablePanel5.add(keySumNum);
-        textLablePanel5.add(sumNum);
+        JScrollPane scrollPane = new JScrollPane(textPanel);
+        JPanel[] labelPanels = new JPanel[5];
 
-        textPanel.add(textLablePanel5);
-        textPanel.add(textLablePanel);
-        textPanel.add(textLablePanel2);
-        textPanel.add(textLablePanel3);
-        textPanel.add(textLablePanel4);
+        JComponent[][] labelContent = {
+                {keyMsg, msg},
+                {keyJob, job},
+                {keyAddParticle, addParticle},
+                {keyDOB, DOB},
+                {keySumNum, sumNum}
+        };
+
+        Color backgroundColor = new Color(117, 55, 10);
+        textPanel.setBackground(backgroundColor);
+        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
+
+        for (int i = 0; i < labelPanels.length; i++) {
+            labelPanels[i] = new JPanel();
+            labelPanels[i].setBackground(backgroundColor);
+            for (JComponent component : labelContent[i]) {
+                labelPanels[i].add(component);
+            }
+            textPanel.add(labelPanels[i]);
+        }
+
         panel.setBackground(new Color(196, 97, 24));
         panel.setLayout(layout);
-
-        JScrollPane scrollPane = new JScrollPane(textPanel);
         scrollPane.setPreferredSize(new Dimension(100, 100));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-
         scrollPane.setBackground(new Color(117, 55, 10));
         scrollPane.setBorder(BorderFactory.createLineBorder(new Color(188, 96, 27), 2   ));
 
@@ -126,10 +120,6 @@ public class JframeUserInterface {
                 }
             }
         });
-
-
-
-
 
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
@@ -171,10 +161,6 @@ public class JframeUserInterface {
         layout.setHorizontalGroup(hGroup);
         frame.add(panel);
     }
-
-
-
-
 
     public void run() {
         this.ui();
