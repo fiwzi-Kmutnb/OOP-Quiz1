@@ -4,7 +4,7 @@ import java.util.*;
 
 public class BirthdayNumber {
     public Map<String,List<Map<List<Integer>, String>>> get() {
-        Map<String,List<Map<List<Integer>, String>>> value = new HashMap<>();
+        Map<String,List<Map<List<Integer>, String>>> value = new HashMap<String,List<Map<List<Integer>, String>>>();
         value.put(
                 "วันจันทร์",
                 Arrays.asList(

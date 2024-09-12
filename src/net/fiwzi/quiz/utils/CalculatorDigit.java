@@ -17,4 +17,7 @@ public class CalculatorDigit {
         if (sum == 0) return 0;
         return (sum % 9 == 0) ? 9 : (sum % 9);
     }
+    public String address(String str) {
+        return str.replaceAll("[^0-9]", "");
+    }
 }
